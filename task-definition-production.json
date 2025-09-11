@@ -1,0 +1,95 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "test-testapi-container-prod",
+      "image": "897729145798.dkr.ecr.eu-south-1.amazonaws.com/test-testapi",
+      "cpu": 0,
+      "portMappings": [
+        {
+          "name": "test-testapi-container-prod-5000-tcp",
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "protocol": "tcp",
+          "appProtocol": "http"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "ASPNETCORE_URLS",
+          "value": "http://+:5000"
+        },
+        {
+          "name": "ENV",
+          "value": "prod"
+        }
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/test-testapi-td-prod",
+          "awslogs-create-group": "true",
+          "awslogs-region": "eu-central-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "systemControls": []
+    }
+  ],
+  "family": "test-testapi-td-prod",
+  "taskRoleArn": "arn:aws:iam::897729145798:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::897729145798:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 620,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2025-07-08T08:45:36.962Z",
+  "registeredBy": "arn:aws:iam::897729145798:user/Stathis",
+  "tags": []
+}

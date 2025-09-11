@@ -1,0 +1,6 @@
+@LogTestAPI_HostAddress = http://localhost:5289
+
+GET {{LogTestAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
