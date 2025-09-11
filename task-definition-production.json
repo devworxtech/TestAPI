@@ -31,7 +31,7 @@
         "options": {
           "awslogs-group": "/ecs/test-testapi-td-prod",
           "awslogs-create-group": "true",
-          "awslogs-region": "eu-central-1",
+          "awslogs-region": "eu-south-1",
           "awslogs-stream-prefix": "ecs"
         },
         "secretOptions": []
