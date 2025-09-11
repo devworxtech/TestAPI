@@ -4,6 +4,8 @@ using Serilog.Sinks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 var app = builder.Build();
 
 using var logger = new LoggerConfiguration()
