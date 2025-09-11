@@ -4,10 +4,6 @@ using Serilog.Sinks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-var app = builder.Build();
-
 using var logger = new LoggerConfiguration()
     .MinimumLevel.Is(LogEventLevel.Information)
     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -23,6 +19,10 @@ using var logger = new LoggerConfiguration()
 
 builder.Logging.AddSerilog(logger);
 logger.Information("Starting up");
+
+var app = builder.Build();
+
+
 
 app.MapGet("/", () =>
 {
