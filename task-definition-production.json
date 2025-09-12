@@ -1,51 +1,55 @@
 {
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
   "containerDefinitions": [
     {
-      "name": "test-testapi-container-prod",
-      "image": "897729145798.dkr.ecr.eu-south-1.amazonaws.com/test-testapi",
       "cpu": 0,
-      "portMappings": [
-        {
-          "name": "test-testapi-container-prod-5000-tcp",
-          "containerPort": 5000,
-          "hostPort": 5000,
-          "protocol": "tcp",
-          "appProtocol": "http"
-        }
-      ],
-      "essential": true,
       "environment": [
-        {
-          "name": "ASPNETCORE_URLS",
-          "value": "http://+:5000"
-        },
         {
           "name": "ENV",
           "value": "prod"
+        },
+        {
+          "name": "ASPNETCORE_URLS",
+          "value": "http://+:5000"
         }
       ],
-      "mountPoints": [],
-      "volumesFrom": [],
+      "essential": true,
+      "image": "897729145798.dkr.ecr.eu-south-1.amazonaws.com/test-testapi:4941034a7dfacf4d0cb14382c02b09d08b2909db",
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/test-testapi-td-prod",
+          "awslogs-group": "/ecs/test-loggroup",
           "awslogs-create-group": "true",
           "awslogs-region": "eu-south-1",
           "awslogs-stream-prefix": "ecs"
-        },
-        "secretOptions": []
+        }
       },
-      "systemControls": []
+      "mountPoints": [],
+      "name": "test-testapi-container",
+      "portMappings": [
+        {
+          "appProtocol": "http",
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "name": "test-testapi-container-prod-5000-tcp",
+          "protocol": "tcp"
+        }
+      ],
+      "systemControls": [],
+      "volumesFrom": []
     }
   ],
-  "family": "test-testapi-td-prod",
-  "taskRoleArn": "arn:aws:iam::897729145798:role/ecsTaskExecutionRole",
+  "cpu": "1024",
   "executionRoleArn": "arn:aws:iam::897729145798:role/ecsTaskExecutionRole",
+  "family": "test-testapi-td",
+  "memory": "2048",
   "networkMode": "awsvpc",
-  "revision": 620,
-  "volumes": [],
-  "status": "ACTIVE",
+  "placementConstraints": [],
+  "registeredAt": "2025-09-11T17:54:17.341Z",
+  "registeredBy": "arn:aws:iam::897729145798:user/Stathis",
   "requiresAttributes": [
     {
       "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
@@ -75,21 +79,16 @@
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
     }
   ],
-  "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "1024",
-  "memory": "2048",
+  "revision": 4,
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
-  "registeredAt": "2025-07-08T08:45:36.962Z",
-  "registeredBy": "arn:aws:iam::897729145798:user/Stathis",
+  "status": "ACTIVE",
+  "taskRoleArn": "arn:aws:iam::897729145798:role/ecsTaskExecutionRole",
+  "volumes": [],
   "tags": []
 }

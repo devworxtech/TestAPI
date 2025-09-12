@@ -10,7 +10,7 @@ using var logger = new LoggerConfiguration()
     .Filter.ByExcluding(logEvent => logEvent.Properties.TryGetValue("SourceContext", out var sourceContext)
                                     && (sourceContext.ToString().Contains("Microsoft.AspNetCore")
                                         || sourceContext.ToString().Contains("System.Net.Http")))
-    .WriteTo.OpenTelemetry(endpoint: "http://opentelemetry-serv-discovery-test.namespace-test:4317", protocol : OtlpProtocol.Grpc,
+    .WriteTo.OpenTelemetry(endpoint: "http://otlp-serv-discovery-test.namespace-test:4317", protocol : OtlpProtocol.Grpc,
         resourceAttributes: new Dictionary<string, object>
         {
             ["service.name"] = "TestAPI " + Environment.GetEnvironmentVariable("ENV") + "-" + DateTime.UtcNow.ToString("yyyy")
