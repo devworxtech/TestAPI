@@ -5,7 +5,7 @@ using Serilog.Sinks.OpenTelemetry;
 var builder = WebApplication.CreateBuilder(args);
 
 using var logger = new LoggerConfiguration()
-    .MinimumLevel.Is(LogEventLevel.Information)
+    .MinimumLevel.Debug()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
     .Filter.ByExcluding(logEvent => logEvent.Properties.TryGetValue("SourceContext", out var sourceContext)
                                     && (sourceContext.ToString().Contains("Microsoft.AspNetCore")
