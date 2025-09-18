@@ -19,7 +19,7 @@ using var logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Logging.AddSerilog(logger);
-for (int i = 0; i < 50_000; i++)
+for (int i = 0; i < 100; i++)
 {
     logger.Debug("Starting up");
 }
