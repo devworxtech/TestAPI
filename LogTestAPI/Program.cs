@@ -21,7 +21,7 @@ using var logger = new LoggerConfiguration()
 builder.Logging.AddSerilog(logger);
 for (int i = 0; i < 100; i++)
 {
-    logger.Debug("Starting up");
+    logger.Warning("Starting up");
 }
 
 
