@@ -15,6 +15,7 @@ using var logger = new LoggerConfiguration()
         {
             ["service.name"] = "TestAPI " + Environment.GetEnvironmentVariable("ENV") + "-" + DateTime.UtcNow.ToString("yyyy")
         })
+    .WriteTo.Console()
     .CreateLogger();
 
 builder.Logging.AddSerilog(logger);
