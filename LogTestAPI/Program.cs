@@ -19,9 +19,9 @@ using var logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Logging.AddSerilog(logger);
-for (int i = 0; i < 10000; i++)
+for (int i = 0; i < 100_000; i++)
 {
-    logger.Warning("Starting up");
+    logger.Warning("Structured logging test {1} .. Starting up", i);
 }
 
 
