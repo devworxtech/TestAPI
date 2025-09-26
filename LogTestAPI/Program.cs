@@ -19,17 +19,12 @@ using var logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Logging.AddSerilog(logger);
-for (int i = 0; i < 100_000; i++)
+for (int i = 0; i < 1_000; i++)
 {
-    logger.Warning("Starting up");
+    logger.Warning("Starting up counter {counter}", i.ToString());
 }
 
-
-
-
 var app = builder.Build();
-
-
 
 app.MapGet("/", () =>
 {
