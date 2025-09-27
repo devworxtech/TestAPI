@@ -9,7 +9,7 @@
       "environment": [
         {
           "name": "ENV",
-          "value": "prod"
+          "value": "dev"
         },
         {
           "name": "ASPNETCORE_URLS",
