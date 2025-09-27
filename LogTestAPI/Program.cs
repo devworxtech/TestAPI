@@ -1,3 +1,4 @@
+using CRMAPI.Middlewares;
 using LogTestAPI;
 using Serilog;
 using Serilog.Events;
@@ -8,7 +9,6 @@ using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
-
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -60,9 +60,10 @@ for (int i = 0; i < 1_000; i++)
 //
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionMiddleware>();
+app.AddEndpoints(app.Logger);
 app.MapGet("/", () =>
 {
     Results.Ok("Healthy");
 });
-app.AddEndpoints(app.Logger);
 app.Run();
