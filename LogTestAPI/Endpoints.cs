@@ -8,11 +8,13 @@ public static class BulkEndpoints
     public static void AddEndpoints(this WebApplication app, ILogger logger)
     {
         _logger = logger;
-        app.MapPost($"{BaseRoute}/checkHealthy", () =>
-        {
-            var test = "testing";
-            _logger.LogInformation("Checking Healthy : {test}", test.ToString());
-            Results.Ok();
-        });
+        app.MapGet($"{BaseRoute}/checkHealthy", CheckHealthy);
+    }
+    
+    internal static async Task<IResult> CheckHealthy()
+    {
+        var test = "testing";
+        _logger.LogInformation("Checking healthy {test}", test);
+        return Results.Ok();
     }
 }
