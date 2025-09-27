@@ -9,10 +9,10 @@ public class BulkEndpoints
         app.MapGet($"{BaseRoute}/checkHealthy", CheckHealthy);
     }
     
-    internal static async Task<IResult> CheckHealthy(ILogger<BulkEndpoints> logger)
+    internal static async Task<IResult> CheckHealthy()
     {
         var test = "testing";
-        logger.LogInformation("Checking healthy {test}", test);
+        // logger.LogInformation("Checking healthy {test}", test);
         return Results.Ok();
     }
 }
