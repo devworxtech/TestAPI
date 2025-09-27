@@ -61,7 +61,7 @@ for (int i = 0; i < 1_000; i++)
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
-BulkEndpoints.AddEndpoints(app);
+app.AddEndpoints(app.Logger);
 app.MapGet("/", () =>
 {
     Results.Ok("Healthy");
